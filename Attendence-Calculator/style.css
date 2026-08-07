@@ -1,0 +1,596 @@
+/* ==========================================
+   ATTENDANCE CALCULATOR
+   Modern UI - Part 1
+========================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0F172A,#1E3A8A);
+    color:#fff;
+    padding:30px;
+    overflow-x:hidden;
+}
+
+/* =========================
+   Container
+========================= */
+
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    align-items:start;
+}
+
+/* =========================
+   Glass Cards
+========================= */
+
+.card,
+.result-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    color:#fff;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
+
+    transition:.35s ease;
+
+}
+
+.card:hover,
+.result-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 25px 55px rgba(0,0,0,.35);
+
+}
+
+/* =========================
+   Heading
+========================= */
+
+.card h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:10px;
+
+}
+
+.card h1 i{
+
+    color:#60A5FA;
+
+}
+
+.subtitle{
+
+    color:#CBD5E1;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
+
+/* =========================
+   Input Group
+========================= */
+
+.input-group{
+
+    margin-bottom:22px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#E2E8F0;
+
+}
+
+.input-group input{
+
+    width:100%;
+
+    height:55px;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:#111827;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.input-group input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+.input-group input:focus{
+
+    box-shadow:
+    0 0 0 3px rgba(59,130,246,.35);
+
+}
+
+/* Remove arrows */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+
+    -webkit-appearance:none;
+    margin:0;
+
+}
+
+input[type=number]{
+
+    appearance:textfield;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.button-group{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.button-group button{
+
+    flex:1;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+}
+
+.button-group button:active{
+
+    transform:scale(.97);
+
+}
+
+#calculateBtn{
+
+    background:#2563EB;
+
+    color:#fff;
+
+}
+
+#calculateBtn:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-3px);
+
+}
+
+#resetBtn{
+
+    background:#EF4444;
+
+    color:#fff;
+
+}
+
+#resetBtn:hover{
+
+    background:#DC2626;
+
+    transform:translateY(-3px);
+
+}
+/* ==========================================
+   ATTENDANCE CALCULATOR
+   Modern UI - Part 2
+========================================== */
+
+/* =========================
+   Result Card
+========================= */
+
+.result-card h2{
+    font-size:28px;
+    margin-bottom:25px;
+    font-weight:700;
+    color:#fff;
+}
+
+.result-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 20px;
+    margin-bottom:14px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    transition:.3s ease;
+}
+
+.result-item:hover{
+    background:rgba(255,255,255,.12);
+    transform:translateX(5px);
+}
+
+.result-item span{
+    color:#CBD5E1;
+    font-size:15px;
+}
+
+.result-item strong{
+    font-size:18px;
+    font-weight:700;
+}
+
+/* =========================
+   Progress Bar
+========================= */
+
+.progress{
+    width:100%;
+    height:22px;
+    margin-top:28px;
+    background:#334155;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    border-radius:50px;
+    background:linear-gradient(
+        90deg,
+        #22C55E,
+        #16A34A
+    );
+
+    transition:width .6s ease;
+}
+
+/* =========================
+   Status Colors
+========================= */
+
+.safe{
+    color:#22C55E;
+}
+
+.warning{
+    color:#F59E0B;
+}
+
+.danger{
+    color:#EF4444;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.creator{
+
+    width:100%;
+
+    text-align:center;
+
+    margin-top:40px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+    color:rgba(255,255,255,.75);
+
+}
+
+.creator a{
+
+    color:#60A5FA;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.creator a:hover{
+
+    color:#93C5FD;
+
+    text-decoration:underline;
+
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0F172A;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3B82F6;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#2563EB;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
+gap:20px;
+
+}
+
+.card,
+.result-card{
+
+padding:25px;
+
+}
+
+.card h1{
+
+font-size:28px;
+
+}
+
+.button-group{
+
+flex-direction:column;
+
+}
+
+.button-group button{
+
+width:100%;
+
+}
+
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media(max-width:480px){
+
+body{
+
+padding:15px;
+
+}
+
+.container{
+
+margin:20px auto;
+
+}
+
+.card,
+.result-card{
+
+padding:20px;
+
+border-radius:18px;
+
+}
+
+.card h1{
+
+font-size:24px;
+
+}
+
+.subtitle{
+
+font-size:14px;
+
+}
+
+.input-group label{
+
+font-size:14px;
+
+}
+
+.input-group input{
+
+height:50px;
+
+font-size:15px;
+
+}
+
+.button-group button{
+
+height:50px;
+
+font-size:15px;
+
+}
+
+.result-card h2{
+
+font-size:24px;
+
+}
+
+.result-item{
+
+padding:15px;
+
+}
+
+.result-item span{
+
+font-size:14px;
+
+}
+
+.result-item strong{
+
+font-size:16px;
+
+}
+
+.progress{
+
+height:18px;
+
+}
+
+.creator{
+
+font-size:12px;
+
+padding:0 10px;
+
+white-space:normal;
+
+line-height:1.6;
+
+}
+
+}
+
+/* =========================
+   Small Animations
+========================= */
+
+.card,
+.result-card,
+button,
+input,
+.result-item{
+
+transition:.3s ease;
+
+}
+
+button{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+button:focus,
+input:focus{
+
+outline:none;
+
+}
+
+::selection{
+
+background:#3B82F6;
+
+color:#fff;
+
+}

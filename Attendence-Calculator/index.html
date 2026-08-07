@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFFS8G0PCK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFFS8G0PCK');
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xybcdtpm9l");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- INPUT CARD -->
+    <div class="card">
+
+        <h1>
+            <i class="fa-solid fa-user-graduate"></i>
+            Attendance Calculator
+        </h1>
+
+        <p class="subtitle">
+            Calculate your attendance, bunk limit and required classes instantly.
+        </p>
+
+        <div class="input-group">
+            <label>Total Classes</label>
+            <input
+                type="number"
+                id="totalClasses"
+                placeholder="Enter total classes">
+        </div>
+
+        <div class="input-group">
+            <label>Attended Classes</label>
+            <input
+                type="number"
+                id="attendedClasses"
+                placeholder="Enter attended classes">
+        </div>
+
+        <div class="input-group">
+            <label>Target Attendance (%)</label>
+            <input
+                type="number"
+                id="targetAttendance"
+                value="75"
+                min="1"
+                max="100">
+        </div>
+
+        <div class="button-group">
+
+            <button id="calculateBtn">
+                <i class="fa-solid fa-calculator"></i>
+                Calculate
+            </button>
+
+            <button id="resetBtn">
+                <i class="fa-solid fa-rotate-left"></i>
+                Reset
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RESULT CARD -->
+
+    <div class="result-card">
+
+        <h2>Results</h2>
+
+        <div class="result-item">
+            <span>Attendance</span>
+            <strong id="attendancePercent">0%</strong>
+        </div>
+
+        <div class="result-item">
+            <span>Present Classes</span>
+            <strong id="presentResult">0</strong>
+        </div>
+
+        <div class="result-item">
+            <span>Absent Classes</span>
+            <strong id="absentResult">0</strong>
+        </div>
+
+        <div class="result-item">
+            <span>You Can Bunk</span>
+            <strong id="bunkResult">0</strong>
+        </div>
+
+        <div class="result-item">
+            <span>Need To Attend</span>
+            <strong id="needAttendResult">0</strong>
+        </div>
+
+        <div class="result-item">
+            <span>Status</span>
+            <strong id="statusResult">-</strong>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="creator">
+    © 2026 Attendance Calculator &nbsp; • &nbsp; Made with ❤️ by
+    <a href="https://rishavtiwari.dpdns.org"
+       target="_blank"
+       rel="noopener noreferrer">
+        Anupam Raj
+    </a>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
