@@ -23,8 +23,8 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet"
@@ -40,12 +40,36 @@
 
         <h1>
             <i class="fa-solid fa-user-graduate"></i>
-            Attendance Calculator
+            Attendance <span>Calculator</span>
         </h1>
 
         <p class="subtitle">
             Calculate your attendance, bunk limit and required classes instantly.
         </p>
+
+        <!-- SCREENSHOT ANALYSER -->
+        <div class="scan-box" id="dropZone">
+            <input type="file" id="screenshotInput" accept="image/*" hidden>
+
+            <button type="button" class="scan-btn" id="scanBtn">
+                <i class="fa-solid fa-camera"></i>
+                Analyse Screenshot
+            </button>
+
+            <p class="scan-hint">
+                Upload, drop or paste (Ctrl+V) your attendance screenshot.
+                Read on your device only, nothing is uploaded.
+            </p>
+
+            <img id="previewImg" class="preview" alt="Screenshot preview" hidden>
+
+            <div class="scan-progress" id="scanProgress" hidden>
+                <div class="scan-progress-bar" id="scanProgressBar"></div>
+            </div>
+
+            <p class="scan-status" id="scanStatus"></p>
+            <p class="scan-mode" id="scanMode"></p>
+        </div>
 
         <div class="input-group">
             <label>Total Classes</label>
@@ -143,6 +167,9 @@
     </a>
 </div>
 
+<!-- OCR engine (runs in the browser) -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="config.js"></script>
 <script src="script.js"></script>
 
 </body>
